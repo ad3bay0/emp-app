@@ -76,15 +76,6 @@ public class DBConfig {
 		
 	}
 	
-	
-	@Bean
-	public HibernateTemplate hibernateTemplate(){
-		
-		
-		return new HibernateTemplate(sessionFactory());
-		
-	}
-	
 	@Bean
 	public HibernateTransactionManager hibTransMan(){
 		
