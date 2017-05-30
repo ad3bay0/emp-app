@@ -5,12 +5,14 @@ package com.ad3bay0.empapp.dao;
 
 import java.util.List;
 
+
 import org.hibernate.Criteria;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.ad3bay0.empapp.entity.Person;
 
@@ -19,6 +21,7 @@ import com.ad3bay0.empapp.entity.Person;
  * 26 May 2017
  */
 
+@Transactional
 @Repository
 public class PersonDao implements IPersonDao {
 	
@@ -31,7 +34,7 @@ public class PersonDao implements IPersonDao {
 	}
 
 	public Person getPersonById(int uid){		
-		Person p = getSession().get(Person.class, uid);	
+		Person p = (Person)getSession().get(Person.class, uid);	
 		return p;
 	}
 	
@@ -73,6 +76,12 @@ public class PersonDao implements IPersonDao {
 			
 			return true;	
 		}	
+	}
+	
+	public void deletePerson(int pid){
+		
+		getSession().delete(getPersonById(pid));
+		
 	}
 	
 }

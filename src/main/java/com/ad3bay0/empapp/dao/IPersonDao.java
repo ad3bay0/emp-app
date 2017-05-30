@@ -3,6 +3,8 @@
  */
 package com.ad3bay0.empapp.dao;
 
+import java.util.List;
+
 import com.ad3bay0.empapp.entity.Person;
 
 /**
@@ -27,5 +29,11 @@ public interface IPersonDao {
 	 * @return
 	 */
 	boolean personExists(String username);
+	
+	List<Person> getAllPersons();
+	
+	void updatePerson(Person person);
+	
+	void deletePerson(int pid);
 
 }

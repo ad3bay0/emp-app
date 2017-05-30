@@ -3,43 +3,35 @@
  */
 package com.ad3bay0.empapp.config;
 
-import javax.servlet.ServletContext;
-import javax.servlet.ServletException;
-import javax.servlet.ServletRegistration;
-
-import org.springframework.web.WebApplicationInitializer;
-import org.springframework.web.context.ContextLoaderListener;
-import org.springframework.web.context.WebApplicationContext;
-import org.springframework.web.context.support.AnnotationConfigWebApplicationContext;
-import org.springframework.web.servlet.DispatcherServlet;
+import org.springframework.web.servlet.support.AbstractAnnotationConfigDispatcherServletInitializer;
 
 /**
  * @author Adebayo Adeniyan
  * 24 May 2017
  */
-public class WebAppInitializer implements WebApplicationInitializer {
+public class WebAppInitializer extends AbstractAnnotationConfigDispatcherServletInitializer {
 
-	public void onStartup(ServletContext servletContext) throws ServletException {
+
+	@Override
+	protected Class<?>[] getRootConfigClasses() {
 		
-		WebApplicationContext context = getContext();
-		
-		servletContext.addListener(new ContextLoaderListener(context));
-		
-		ServletRegistration.Dynamic dispatcher = servletContext.addServlet("DispatcherServlet", new DispatcherServlet(context));
-		
-		dispatcher.setLoadOnStartup(1);
-		
-		dispatcher.addMapping("/*");
-		
+		return new Class[]{AppConfig.class};
 	}
+
 	
-	private AnnotationConfigWebApplicationContext getContext(){
+	@Override
+	protected Class<?>[] getServletConfigClasses() {
 		
-		AnnotationConfigWebApplicationContext context = new AnnotationConfigWebApplicationContext();
-		context.setConfigLocation("com.ad3bay0.empapp.config");
-		
-		return context;
-		
+		return null;
 	}
+
+
+	@Override
+	protected String[] getServletMappings() {
+		
+		return new String[]{"/"};
+	}
+
+
 
 }
