@@ -25,7 +25,7 @@ import org.springframework.web.servlet.view.InternalResourceViewResolver;
  * 24 May 2017
  */
 @Configuration
-@ComponentScan("com.ad3bay0")
+@ComponentScan("com.ad3bay0.empapp")
 @Import(DBConfig.class)
 @EnableWebMvc
 public class AppConfig extends WebMvcConfigurerAdapter {

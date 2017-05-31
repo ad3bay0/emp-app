@@ -72,4 +72,12 @@ public class PersonService implements IPersonService {
 
 	}
 
+	/* (non-Javadoc)
+	 * @see com.ad3bay0.empapp.service.IPersonService#personExists(java.lang.String)
+	 */
+	public boolean personExists(String username) {
+		
+		return personDao.personExists(username);
+	}
+
 }

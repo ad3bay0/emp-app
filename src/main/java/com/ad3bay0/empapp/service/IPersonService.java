@@ -23,5 +23,7 @@ public interface IPersonService {
 	
 	void deletePerson(int pid); 
 	
+	boolean personExists(String username);
+	
 	
 }
